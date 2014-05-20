@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>092497DD-F784-4126-859D-F6C8732467AC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Coin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3AD1852F-CD69-4772-A237-F599DA39E613</key>
+		<string>https://github.com/agilehu/coin.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Coin.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3AD1852F-CD69-4772-A237-F599DA39E613</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/agilehu/coin.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3AD1852F-CD69-4772-A237-F599DA39E613</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3AD1852F-CD69-4772-A237-F599DA39E613</string>
+			<key>IDESourceControlWCCName</key>
+			<string>coin</string>
+		</dict>
+	</array>
+</dict>
+</plist>
