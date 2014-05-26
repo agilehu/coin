@@ -8,8 +8,12 @@
 
 #import "MainViewController.h"
 #import "CoinView.h"
+#import <pop.h>
 
 @interface MainViewController ()
+{
+    CoinView *coinView;
+}
 
 @end
 
@@ -28,10 +32,74 @@
 {
     [super viewDidLoad];
     UIImageView *primaryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"profile.png"]];
-    UIImageView *secondaryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"check-mark-512.gif"]];
-    CoinView *coinView = [[CoinView alloc] initWithPrimaryView:primaryView andSecondaryView:secondaryView inFrame:CGRectMake(15.0f, 30.0f, 120.0f, 120.0f)];
+    UIImageView *secondaryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"image_1.png"]];
+    coinView = [[CoinView alloc] initWithPrimaryView:primaryView andSecondaryView:secondaryView inFrame:CGRectMake(100.0f , 120.0f, 120.0f, 120.0f)];
+    [coinView setCenter:CGPointMake(coinView.center.x, 240)];
     [self.view addSubview:coinView];
+    [self addGesture];
+}
 
+- (void)addGesture
+{
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] init];
+    [swipeGestureRecognizer addTarget:self action:@selector(gestureRecognizerHandle:)];
+    [swipeGestureRecognizer setNumberOfTouchesRequired:1];
+    [swipeGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionUp];
+    [self.view addGestureRecognizer:swipeGestureRecognizer];
+}
+
+- (IBAction)gestureRecognizerHandle:(id)sender
+{
+    POPSpringAnimation *coinRotation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotationX];
+    POPSpringAnimation *coinAnimationUp = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPosition];
+    CGPoint point = coinView.center;
+    
+    coinAnimationUp.toValue = [NSValue valueWithCGPoint:CGPointMake(point.x, -230)];
+    
+    //弹性值
+    coinAnimationUp.springBounciness = 20.0;
+    //弹性速度
+    coinAnimationUp.springSpeed = 30.0;
+    coinAnimationUp.dynamicsFriction = 150;
+
+        
+    POPDecayAnimation *rotationAnim = [POPDecayAnimation animationWithPropertyNamed:kPOPLayerRotationX];
+    
+    coinRotation.velocity = @(10);
+    [coinRotation setSpringSpeed:10];
+//    [rotationAnim
+    
+    [coinView.layer pop_addAnimation:coinRotation forKey:@"rotationAnim"];
+
+//    static BOOL displayingPrimary = YES;
+//    [UIView transitionFromView:(displayingPrimary ? coinView.primaryView : coinView.secondaryView)
+//                        toView:(displayingPrimary ? coinView.secondaryView : coinView.primaryView)
+//                      duration: 1
+//                       options: UIViewAnimationOptionTransitionFlipFromLeft+UIViewAnimationOptionCurveEaseInOut
+//                    completion:^(BOOL finished) {
+//                        if (finished) {
+//                            //UIView *view = (displayingPrimary ? view1 : view2);
+//                            
+//                            displayingPrimary = !displayingPrimary;
+//                        }
+//                    }
+//     ];
+//    
+//    [coinAnimationUp setCompletionBlock:^(POPAnimation *animation, BOOL kBool) {
+//        POPSpringAnimation *coinAnimationDown = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPosition];
+//        
+//        coinAnimationDown.toValue = [NSValue valueWithCGPoint:CGPointMake(point.x, 240)];
+//        
+//        //弹性值
+//        coinAnimationDown.springBounciness = 10.0;
+//        //弹性速度
+//        coinAnimationDown.springSpeed = 30.0;
+//        coinAnimationDown.dynamicsFriction = 10;
+//        coinAnimationDown.dynamicsTension = 200;
+//        coinAnimationDown.dynamicsMass = 0.5;
+//        
+//        [coinView pop_addAnimation:coinAnimationDown forKey:@"changepositiondown"];
+//    }];
 }
 
 - (void)didReceiveMemoryWarning
